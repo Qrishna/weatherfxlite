@@ -25,7 +25,7 @@
 WeatherFXLite::WeatherFXLite() {
 
   window = new QWidget();
-  ui.setupUi(window);  
+  ui.setupUi(window);
 
   window->setStyleSheet("background-color:black;");
 
@@ -106,6 +106,27 @@ void WeatherFXLite::timerTick(void) {
     currentConditionTicks = 0;
     boot = false;
   }
+
+
+    static int spiritualTextUpdateTicks = 0;
+    if (spiritualTextUpdateTicks == 0) {
+        QStringList spiritualTexts = {
+        "<span style='font-family: Preeti; font-size: 60px;'>tTjdl;</span><br>Tat Tvam Asi<br>You are that!<br> - Chandogya Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>k|1fgd\\ a|Xd</span><br>Pragyanam Brahma<br>Consciousness is Brahman<br> - Aitareya Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>cxd\\ a|Xdfl:d</span><br>Aham Brahmasmi<br>I am Brahman<br> - Brihadaranyaka Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>cod\\ cfTdf a|Xd</span><br>Ayam Atma Brahma<br>This Atma (Self) is Brahman<br> - Mandukya Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>Psd]jlåltod a|Xd</span><br>Ekam Evadvitiyam Brahma<br>Brahman is one, without a second<br> - Chandogya Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>;j{d vlNjbd a|Xd</span><br>Sarvam Khalvidam Brahma<br>All this is Brahman<br> - Chandogya Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>;f] xd</span><br>So Ham<br>I am that!<br> - Isha Upanishad",
+        "<span style='font-family: Preeti; font-size: 60px;'>Ptt\\ j} tt\\</span><br>Etat Vai Tat<br>This is the thing you seek!<br> - Katha Upanishad"
+        };
+        static int currentTextIndex = 0;
+
+
+        ui.spiritualText->setText(spiritualTexts[currentTextIndex]);
+        currentTextIndex = (currentTextIndex + 1) % spiritualTexts.size();
+    }
+    spiritualTextUpdateTicks = (spiritualTextUpdateTicks + 1) % 15;
 
 }
 
