@@ -53,6 +53,7 @@ Q_OBJECT
   QGraphicsPixmapItem* item {NULL};
 
   WeatherKitAPI* weatherAPI;
+  QStringList spiritualTexts;
 
   std::string backgroundForTemperature(short temp);
 
